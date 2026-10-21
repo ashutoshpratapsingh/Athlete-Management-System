@@ -1,0 +1,551 @@
+.athletes-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    margin-bottom: 28px;
+}
+
+.athletes-header h1 {
+    margin: 0;
+
+    color: var(--ams-white);
+
+    font-size: 34px;
+    letter-spacing: -1px;
+}
+
+.athletes-header p {
+    margin: 8px 0 0;
+
+    color: var(--ams-muted);
+
+    font-size: 14px;
+}
+
+.primary-action {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 11px 16px;
+
+    border: none;
+    border-radius: var(--radius-sm);
+
+    background: var(--kixar-primary);
+    color: var(--ams-black);
+
+    font-size: 13px;
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.primary-action:hover {
+    background: var(--kixar-primary-dark);
+}
+
+.primary-action span {
+    font-size: 18px;
+}
+
+.athletes-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 18px;
+}
+
+.athlete-search {
+    flex: 1;
+    max-width: 500px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px 14px;
+
+    background: var(--ams-dark-card);
+
+    border: 1px solid var(--ams-border);
+
+    border-radius: var(--radius-sm);
+}
+
+.athlete-search span {
+    color: var(--ams-muted);
+
+    font-size: 20px;
+}
+
+.athlete-search input {
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: var(--ams-text);
+
+    font-size: 13px;
+}
+
+.athlete-search input::placeholder {
+    color: var(--ams-muted);
+}
+
+.athlete-count {
+    color: var(--ams-muted);
+
+    font-size: 12px;
+}
+
+.athletes-error {
+    margin-bottom: 18px;
+
+    padding: 12px 15px;
+
+    background: rgba(248, 113, 113, 0.1);
+
+    border: 1px solid var(--danger);
+
+    border-radius: var(--radius-sm);
+
+    color: var(--danger);
+
+    font-size: 13px;
+}
+
+.athletes-table-container {
+    overflow: hidden;
+
+    background: var(--ams-dark-card);
+
+    border: 1px solid var(--ams-border);
+
+    border-radius: var(--radius-md);
+}
+
+.athletes-table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+.athletes-table th {
+    padding: 14px 18px;
+
+    background: var(--ams-dark);
+
+    color: var(--ams-muted);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.6px;
+
+    text-align: left;
+
+    text-transform: uppercase;
+}
+
+.athletes-table td {
+    padding: 15px 18px;
+
+    border-top: 1px solid var(--ams-border);
+
+    color: var(--ams-text);
+
+    font-size: 13px;
+}
+
+.athletes-table tbody tr {
+    cursor: pointer;
+
+    transition:
+        background 0.2s;
+}
+
+.athletes-table tbody tr:hover {
+    background: var(--ams-dark-card-hover);
+}
+
+.athlete-name-cell {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+}
+
+.athlete-avatar {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: rgba(85, 199, 217, 0.12);
+
+    color: var(--kixar-primary);
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.athlete-name-cell div:last-child {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.athlete-name-cell strong {
+    color: var(--ams-text);
+
+    font-size: 13px;
+}
+
+.athlete-name-cell span {
+    color: var(--ams-muted);
+
+    font-size: 10px;
+}
+
+.position-badge {
+    display: inline-block;
+
+    padding: 5px 8px;
+
+    border-radius: 6px;
+
+    background: rgba(85, 199, 217, 0.08);
+
+    color: var(--kixar-primary);
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.status-badge {
+    display: inline-block;
+
+    padding: 5px 8px;
+
+    border-radius: 6px;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.status-badge.active {
+    background: rgba(74, 222, 128, 0.1);
+
+    color: var(--success);
+}
+
+.status-badge.inactive {
+    background: rgba(248, 113, 113, 0.1);
+
+    color: var(--danger);
+}
+
+.view-athlete {
+    color: var(--kixar-primary);
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.athletes-loading {
+    padding: 60px 20px;
+
+    text-align: center;
+
+    color: var(--ams-muted);
+
+    font-size: 13px;
+}
+
+@media (max-width: 800px) {
+    .athletes-header {
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
+    .athletes-toolbar {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .athlete-search {
+        max-width: none;
+    }
+
+    .athletes-table-container {
+        overflow-x: auto;
+    }
+
+    .athletes-table {
+        min-width: 750px;
+    }
+}
+
+
+/* =========================================
+   ATHLETE FORM MODAL
+========================================= */
+
+.athlete-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(2, 8, 15, 0.82);
+    backdrop-filter: blur(8px);
+    overflow-y: auto;
+}
+
+.athlete-modal {
+    width: min(760px, 100%);
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    padding: 28px;
+    background: var(--ams-dark-card);
+    border: 1px solid var(--ams-border);
+    border-radius: 18px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+}
+
+.athlete-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.athlete-modal-header h2 {
+    margin: 0;
+    color: var(--ams-white);
+    font-size: 25px;
+    letter-spacing: -0.5px;
+}
+
+.athlete-modal-header p {
+    margin: 8px 0 0;
+    color: var(--ams-muted);
+    font-size: 13px;
+}
+
+.athlete-modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    border: 1px solid var(--ams-border);
+    border-radius: 9px;
+    background: var(--ams-input);
+    color: var(--ams-text);
+    font-size: 23px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.athlete-modal-close:hover {
+    border-color: var(--kixar-primary);
+    color: var(--kixar-primary);
+}
+
+.athlete-modal-close:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* =========================================
+   FORM LAYOUT
+========================================= */
+
+.athlete-form {
+    width: 100%;
+}
+
+.athlete-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.athlete-form-field {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 7px;
+}
+
+.athlete-form-field label {
+    color: var(--ams-text);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.athlete-form-field input,
+.athlete-form-field select {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 12px 13px;
+    border: 1px solid var(--ams-border);
+    border-radius: 9px;
+    outline: none;
+    background: var(--ams-input);
+    color: var(--ams-text);
+    font-family: inherit;
+    font-size: 13px;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.athlete-form-field input::placeholder {
+    color: var(--ams-muted);
+}
+
+.athlete-form-field input:focus,
+.athlete-form-field select:focus {
+    border-color: var(--kixar-primary);
+    box-shadow: 0 0 0 3px rgba(85, 199, 217, 0.1);
+}
+
+.athlete-form-field select option {
+    background: var(--ams-dark-card);
+    color: var(--ams-text);
+}
+
+.athlete-form-field small {
+    color: var(--ams-muted);
+    font-size: 10px;
+    line-height: 1.4;
+}
+
+/* =========================================
+   FORM MESSAGES
+========================================= */
+
+.athlete-form-error {
+    margin-bottom: 18px;
+    padding: 12px 14px;
+    border: 1px solid rgba(248, 113, 113, 0.35);
+    border-radius: 9px;
+    background: rgba(248, 113, 113, 0.08);
+    color: #f87171;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.athletes-success {
+    margin-bottom: 20px;
+    padding: 12px 15px;
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    border-radius: 9px;
+    background: rgba(74, 222, 128, 0.08);
+    color: #4ade80;
+    font-size: 13px;
+}
+
+.athlete-form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--ams-border);
+}
+
+.athlete-form-actions .primary-action {
+    border: none;
+}
+
+.athlete-cancel-button {
+    padding: 11px 18px;
+    border: 1px solid var(--ams-border);
+    border-radius: 9px;
+    background: transparent;
+    color: var(--ams-text);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.athlete-cancel-button:hover {
+    border-color: var(--kixar-primary);
+    color: var(--kixar-primary);
+}
+
+.athlete-cancel-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.athlete-form-actions .primary-action:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 650px) {
+    .athlete-modal-overlay {
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .athlete-modal {
+        max-height: calc(100vh - 30px);
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    .athlete-form-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .athlete-modal-header h2 {
+        font-size: 21px;
+    }
+
+    .athlete-form-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .athlete-form-actions button {
+        width: 100%;
+        justify-content: center;
+    }
+}

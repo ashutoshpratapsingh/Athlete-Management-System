@@ -1,0 +1,764 @@
+/* =========================================================
+   AMS AI REPORTS
+   Kixar AMS visual language
+========================================================= */
+
+.ai-reports-page {
+    padding: 28px;
+    color: var(--ams-text);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.ai-reports-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.ai-reports-header h1 {
+    margin: 6px 0 5px;
+    font-size: 30px;
+    color: var(--ams-text);
+    letter-spacing: -0.02em;
+}
+
+.ai-reports-header p {
+    margin: 0;
+    color: var(--ams-muted);
+    font-size: 14px;
+}
+
+.ai-reports-header-stat {
+    min-width: 130px;
+    padding: 16px 22px;
+    border-radius: 14px;
+    background: var(--ams-dark-card);
+    border: 1px solid var(--ams-border);
+    text-align: center;
+}
+
+.ai-reports-header-stat span {
+    display: block;
+    color: var(--ams-muted);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.ai-reports-header-stat strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 25px;
+    color: var(--kixar-primary);
+}
+
+
+/* =========================================================
+   FILTER BAR
+========================================================= */
+
+.ai-reports-toolbar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.ai-reports-search {
+    flex: 1;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 14px;
+
+    background: var(--ams-dark-card);
+    border: 1px solid var(--ams-border);
+    border-radius: 10px;
+}
+
+.ai-reports-search span {
+    color: var(--kixar-primary);
+    font-size: 18px;
+}
+
+.ai-reports-search input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+
+    color: var(--ams-text);
+    font-size: 13px;
+}
+
+.ai-reports-search input::placeholder {
+    color: var(--ams-muted);
+}
+
+.ai-reports-toolbar select {
+    width: 180px;
+    min-height: 44px;
+    padding: 0 12px;
+
+    background: var(--ams-dark-card);
+    color: var(--ams-text);
+
+    border: 1px solid var(--ams-border);
+    border-radius: 10px;
+    outline: none;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   ATHLETE LIST
+========================================================= */
+
+.ai-reports-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* =========================================================
+   ATHLETE CARD
+========================================================= */
+
+.ai-report-athlete-card {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        62px
+        62px
+        62px
+        82px
+        105px;
+
+    align-items: center;
+    gap: 8px;
+
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+
+    padding: 14px 12px;
+
+    background: var(--ams-dark-card);
+    color: var(--ams-text);
+
+    border: 1px solid var(--ams-border);
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    transition:
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.ai-report-athlete-card:hover {
+    transform: translateY(-1px);
+    border-color: rgba(85, 199, 217, 0.35);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+
+/* =========================================================
+   ATHLETE
+========================================================= */
+
+.ai-report-athlete {
+    min-width: 0;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ai-report-avatar {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: rgba(85, 199, 217, 0.10);
+    border: 1px solid rgba(85, 199, 217, 0.20);
+
+    color: var(--kixar-primary);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.ai-report-athlete h3 {
+    margin: 0 0 3px;
+
+    color: var(--ams-text);
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ai-report-athlete p {
+    margin: 0;
+
+    color: var(--ams-muted);
+    font-size: 9px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   METRICS
+========================================================= */
+
+.ai-report-metric {
+    min-width: 0;
+}
+
+.ai-report-metric span,
+.ai-report-trend span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: var(--ams-muted);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.ai-report-metric strong {
+    color: var(--ams-text);
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.ai-report-metric small {
+    margin-left: 2px;
+
+    color: var(--ams-muted);
+    font-size: 9px;
+}
+
+
+/* Overall score uses Kixar cyan */
+
+.ai-report-metric:first-of-type strong {
+    color: var(--kixar-primary);
+}
+
+
+/* =========================================================
+   TREND
+========================================================= */
+
+.ai-report-trend {
+    min-width: 0;
+}
+
+.ai-report-trend strong {
+    display: block;
+
+    color: var(--kixar-primary);
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   VIEW REPORT BUTTON
+========================================================= */
+
+.ai-report-view-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+
+    padding: 9px 5px;
+
+    border: 1px solid rgba(85, 199, 217, 0.3);
+    border-radius: 9px;
+
+    background: rgba(85, 199, 217, 0.08);
+    color: var(--kixar-primary);
+
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.ai-report-view-button:hover {
+    background: rgba(85, 199, 217, 0.15);
+    border-color: var(--kixar-primary);
+}
+
+.ai-report-view-button span {
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.ai-reports-loading,
+.ai-reports-empty {
+    min-height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.ai-reports-loading h3,
+.ai-reports-empty h3 {
+    margin: 16px 0 5px;
+
+    color: var(--ams-text);
+    font-size: 18px;
+}
+
+.ai-reports-loading p,
+.ai-reports-empty p {
+    margin: 0;
+
+    color: var(--ams-muted);
+    font-size: 13px;
+}
+
+.ai-reports-loader {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.08);
+    border-top-color: var(--kixar-primary);
+
+    animation: aiReportsSpin 0.8s linear infinite;
+}
+
+.ai-reports-empty-icon {
+    width: 60px;
+    height: 60px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 18px;
+
+    background: rgba(85, 199, 217, 0.10);
+    color: var(--kixar-primary);
+
+    font-size: 28px;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.ai-reports-error {
+    padding: 13px 15px;
+    margin-bottom: 18px;
+
+    border: 1px solid rgba(248, 113, 113, 0.25);
+    border-radius: 10px;
+
+    background: rgba(248, 113, 113, 0.08);
+    color: var(--danger);
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes aiReportsSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .ai-report-athlete-card {
+        grid-template-columns:
+            minmax(200px, 1.5fr)
+            80px
+            80px
+            80px
+            110px
+            125px;
+
+        gap: 10px;
+    }
+
+    .ai-report-view-button {
+        width: 125px;
+        min-width: 125px;
+    }
+}
+
+
+@media (max-width: 900px) {
+
+    .ai-report-athlete-card {
+        grid-template-columns:
+            minmax(200px, 1fr)
+            repeat(3, 80px);
+
+        row-gap: 14px;
+    }
+
+    .ai-report-athlete {
+        grid-column: 1 / -1;
+    }
+
+    .ai-report-trend {
+        grid-column: 1 / 2;
+    }
+
+    .ai-report-view-button {
+        grid-column: 4 / 5;
+        width: 100%;
+        min-width: 0;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .ai-reports-page {
+        padding: 18px;
+    }
+
+    .ai-reports-header {
+        flex-direction: column;
+    }
+
+    .ai-reports-toolbar {
+        flex-direction: column;
+    }
+
+    .ai-reports-toolbar select {
+        width: 100%;
+    }
+
+    .ai-report-athlete-card {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .ai-report-athlete {
+        grid-column: 1 / -1;
+    }
+
+    .ai-report-view-button {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+}
+
+/* =========================================
+   AI REPORT - BENCHMARK INTELLIGENCE
+   ========================================= */
+
+.ai-benchmark-summary {
+    grid-column: 1 / -1;
+    margin-top: 18px;
+    padding: 16px 18px;
+    border-radius: 14px;
+    background: rgba(15, 23, 42, 0.035);
+    border: 1px solid rgba(15, 23, 42, 0.10);
+}
+
+.ai-benchmark-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.ai-benchmark-header > span {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: #334155;
+}
+
+.ai-benchmark-header strong {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    padding: 5px 9px;
+    border-radius: 999px;
+}
+
+.benchmark-pass {
+    color: #047857;
+    background: rgba(16, 185, 129, 0.12);
+}
+
+.benchmark-review {
+    color: #b45309;
+    background: rgba(245, 158, 11, 0.14);
+}
+
+.benchmark-neutral {
+    color: #475569;
+    background: rgba(100, 116, 139, 0.12);
+}
+
+.ai-benchmark-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(110px, 1fr));
+    gap: 10px;
+    width: 100%;
+}
+
+.ai-benchmark-stat {
+    min-width: 0;
+    padding: 11px 12px;
+    border-radius: 10px;
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.ai-benchmark-stat span {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.25;
+    color: #64748b;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.ai-benchmark-stat strong {
+    display: block;
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 800;
+    color: #0f172a;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+    .ai-benchmark-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 650px) {
+    .ai-benchmark-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ai-benchmark-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+/* =========================================
+   BENCHMARK INTELLIGENCE - FINAL FIX
+   ========================================= */
+
+.ai-benchmark-stats {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 8px;
+
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 0 4px 20px 4px;
+}
+
+.ai-benchmark-stat {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    overflow: hidden;
+}
+
+.ai-benchmark-stat strong {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    box-sizing: border-box;
+
+    font-size: 11px;
+    line-height: 1.25;
+
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    word-break: break-word;
+}
+
+/* Give the LEVEL box slightly more room */
+.ai-benchmark-stat:nth-child(2) strong {
+    font-size: 11px;
+}
+
+/* Keep the last box away from the card/table boundary */
+.ai-benchmark-stat:last-child {
+    margin-right: 2px;
+}
+
+.ai-report-athlete-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.ai-benchmark-section {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* =========================================
+   BENCHMARK INTELLIGENCE - FINAL 6 CARD FIX
+   ========================================= */
+
+.ai-benchmark-summary {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.ai-benchmark-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 8px;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    box-sizing: border-box;
+}
+
+.ai-benchmark-stat {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+
+    box-sizing: border-box;
+    overflow: hidden;
+
+    padding: 10px 8px;
+    margin: 0;
+}
+
+.ai-benchmark-stat span {
+    display: block;
+
+    font-size: 8px;
+    line-height: 1.2;
+    font-weight: 700;
+
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.ai-benchmark-stat strong {
+    display: block;
+
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+
+    box-sizing: border-box;
+
+    font-size: 10px;
+    line-height: 1.2;
+    font-weight: 800;
+
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+
+    overflow: hidden;
+}
+
+/* LEVEL needs to be able to wrap */
+.ai-benchmark-stat:nth-child(2) strong {
+    font-size: 9px;
+    line-height: 1.15;
+    white-space: normal;
+    word-break: break-word;
+}
+
+/* Give the last card breathing room */
+.ai-benchmark-stat:last-child {
+    margin-right: 0;
+}
+
+.ai-benchmark-grid {
+    margin-bottom: 10px;
+}

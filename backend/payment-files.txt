@@ -1,0 +1,184 @@
+﻿const mongoose = require("mongoose");
+
+const paymentSchema = new mongoose.Schema(
+    {
+        athleteId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Athlete",
+            required: true
+        },
+
+        reportId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "AIReport",
+            required: true
+        },
+
+        amount: {
+            type: Number,
+            required: true,
+            min: 0
+        },
+
+        currency: {
+            type: String,
+            default: "INR"
+        },
+
+        paymentStatus: {
+            type: String,
+            enum: ["PENDING", "SUCCESS", "FAILED", "REFUNDED"],
+            default: "PENDING"
+        },
+
+        paymentMethod: {
+            type: String,
+            enum: ["SIMULATED", "RAZORPAY"],
+            default: "SIMULATED"
+        },
+
+        transactionId: {
+            type: String,
+            trim: true
+        },
+
+        paymentDate: {
+            type: Date
+        }
+    },
+    {
+        timestamps: true
+    }
+);
+
+const Payment = mongoose.model("Payment", paymentSchema);
+
+module.exports = Payment;
+const Payment = require("../models/Payment");
+const AIReport = require("../models/AIReport");
+
+const createPayment = async (req, res) => {
+    try {
+        const { reportId } = req.body;
+        const athleteId = req.params.athleteId;
+
+        const amount = Number(process.env.REPORT_FEE);
+
+        if (!amount || amount <= 0) {
+        return res.status(500).json({
+            success: false,
+            message: "Report fee is not configured correctly"
+        });
+    }
+
+        // Make sure the report belongs to this athlete
+        if (report.athleteId.toString() !== athleteId) {
+            return res.status(403).json({
+                success: false,
+                message: "This report does not belong to this athlete"
+            });
+        }
+
+        // Prevent duplicate payment for an already unlocked report
+        if (report.isPaid) {
+            return res.status(400).json({
+                success: false,
+                message: "This report has already been unlocked"
+            });
+        }
+
+        // Create simulated payment
+        const payment = await Payment.create({
+            athleteId,
+            reportId,
+            amount,
+            currency: "INR",
+            paymentStatus: "SUCCESS",
+            paymentMethod: "SIMULATED",
+            transactionId: `SIM-${Date.now()}`,
+            paymentDate: new Date()
+        });
+
+        // Unlock the report
+        report.isPaid = true;
+        await report.save();
+
+        res.status(201).json({
+            success: true,
+            message: "Payment successful. Full report unlocked.",
+            data: {
+                payment,
+                reportAccess: true
+            }
+        });
+
+    } catch (error) {
+        console.error("Create payment error:", error.message);
+
+        res.status(500).json({
+            success: false,
+            message: "Payment failed",
+            error: error.message
+        });
+    }
+};
+
+const getAthletePayments = async (req, res) => {
+    try {
+        const payments = await Payment.find({
+            athleteId: req.params.athleteId
+        }).sort({ createdAt: -1 });
+
+        res.status(200).json({
+            success: true,
+            count: payments.length,
+            data: payments
+        });
+
+    } catch (error) {
+        console.error("Get payments error:", error.message);
+
+        res.status(500).json({
+            success: false,
+            message: "Failed to fetch payments",
+            error: error.message
+        });
+    }
+};
+
+module.exports = {
+    createPayment,
+    getAthletePayments
+};
+const express = require("express");
+
+const {
+    createPayment,
+    getAthletePayments
+} = require("../controllers/paymentController");
+
+const authMiddleware = require("../middleware/authMiddleware");
+const roleMiddleware = require("../middleware/roleMiddleware");
+const ownershipMiddleware = require("../middleware/ownershipMiddleware");
+
+const router = express.Router();
+
+// Create payment for an athlete's report
+router.post(
+    "/athlete/:athleteId",
+    authMiddleware,
+    roleMiddleware("ATHLETE"),
+    ownershipMiddleware,
+    createPayment
+);
+
+// Get payment history
+router.get(
+    "/athlete/:athleteId",
+    authMiddleware,
+    roleMiddleware("ADMIN", "COACH", "ATHLETE"),
+    ownershipMiddleware,
+    getAthletePayments
+);
+
+module.exports = router;
